@@ -17,13 +17,19 @@ def add_majors(*args, **kwargs):
     query = sqla.select(Major)
     if db.session.scalars(query).first() is None:
         majors = [{'name':'CS','department':'Computer Science'},
-            {'name':'DS','department':'Computer Science'},
             {'name':'RBE','department':'Robotics Engineering'},
+            {'name':'DS','department':'Computer Science'},
             {'name':'ME','department':'Mechanical Engineering'}, 
-            {'name':'MATH','department': 'Mathematics'}  ]
+            {'name':'MATH','department': 'Mathematics'},
+            {'name':'PSY', 'department': 'Psychology'},
+            {'name':'ECO', 'department': 'Economics'},
+            {'name':'ENG', 'department': 'English'},
+            {'name':'HIS', 'department': 'History'},
+            {'name':'MUS', 'department': 'Music'}  ]
         for m in majors:
             db.session.add(Major(name = m['name'], department = m['department']))
         db.session.commit()
+
 
 @app.before_request
 def before_request():
