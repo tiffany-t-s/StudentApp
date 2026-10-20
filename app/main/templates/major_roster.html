@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2 class="crimsontitle">Students in Major : {{major.get_name()}} - {{major.get_department()}}</h2>
+   
+    <table class="studenttable">
+        <thead>
+            <tr valign="bottom">
+                <th width = "20%"> Name </th>
+                <th width = "30%"> Email </th>
+                <th width = "30%"> Address </th>
+                <th width = "20%"> Student last seen at: </th>
+            </tr>
+        </thead>
+        {% for student in students %}
+            {% include '_student.html' %}
+        {% endfor %}
+    </table>
+    <hr class="solid">
+    <a href="{{url_for('main.display_profile')}}" class="btn btn-outline-dark"> Return to Profile</a>
+{% endblock %}
